@@ -1,123 +1,207 @@
-# 📊 Data Professional Survey — Power BI Dashboard
+<div align="center">
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=1a1f5e&height=200&section=header&text=Data%20Professional%20Survey%20Breakdown&fontSize=36&fontColor=ffffff&fontAlignY=38&desc=Power%20BI%20Dashboard%20%7C%20630%20Respondents%20%7C%20Global%20Survey&descAlignY=58&descSize=16" width="100%"/>
 
+<br/>
 
-## 📌 Overview
+[![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
+[![DAX](https://img.shields.io/badge/DAX-1a1f5e?style=for-the-badge&logo=microsoft&logoColor=white)](https://learn.microsoft.com/en-us/dax/)
+[![Power Query](https://img.shields.io/badge/Power%20Query-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)](https://learn.microsoft.com/en-us/power-query/)
+[![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)](/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-hanzalaraja-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/hanzalaraja)
 
-This project visualizes and analyzes survey responses collected from **630 data professionals** worldwide. The dataset captures insights into career roles, compensation, work-life satisfaction, programming language preferences, and the challenges of breaking into the data field.
+</div>
 
+---
 
+## 📌 Project Overview
 
+> A fully interactive Power BI dashboard built on a **real-world survey dataset** of **630 data professionals** from across the globe. This project covers the complete analytics workflow — from raw, messy data to a clean, insight-driven two-page dashboard — answering the key question:
+>
+> **_What does the data profession actually look like today?_**
 
 
 ---
 
-## 📋 Dataset Overview
+## 🎯 Problem Statement
 
-- **Source:** Online survey (collected June 2022)
-- **Responses:** 630 data professionals
-- **Sheet:** `Data Professional Survey`
+The raw survey data came with several critical issues that made direct analysis impossible:
 
-### Key Columns
-
-| Column | Description |
+| Problem | Description |
 |--------|-------------|
-| Q1 — Current Role | Job title (Data Analyst, Data Engineer, Data Scientist, etc.) |
-| Q2 — Career Switch | Whether respondent switched careers into data |
-| Q3 — Yearly Salary (USD) | Salary range (e.g., 0–40k, 41–65k, up to 225k+) |
-| Q4 — Industry | Sector of employment (Tech, Finance, Healthcare, etc.) |
-| Q5 — Favorite Language | Preferred programming language (Python, R, SQL, etc.) |
-| Q6 — Happiness (6 dimensions) | Satisfaction ratings for Salary, Work/Life Balance, Coworkers, Management, Upward Mobility, Learning |
-| Q7 — Difficulty Breaking In | Perceived difficulty entering the data field |
-| Q8 — Job Priority | Most important factor when looking for a new job |
-| Q9–Q13 | Demographics: Gender, Age, Country, Education, Ethnicity |
+| 📝 Salary as text | Salary was recorded as ranges like `60k–80k` instead of numeric values |
+| 🌍 Inconsistent countries | Country names had multiple spellings and variations |
+| 💼 Scattered job titles | Dozens of unique job title entries with no standardization |
+| ❓ Open-ended responses | Free-text fields needed categorization before visualization |
+
+**Goal:** Clean, transform, and model this data to build a dashboard that tells the real story of the data profession.
 
 ---
 
-## 📊 Dashboard Highlights
+## 🔧 Tools & Technologies
 
-The Power BI report covers:
-
-- **Salary distribution** by job title and country
-- **Career switcher analysis** — who transitioned into data and from where
-- **Top programming languages** by role and region
-- **Happiness scores** across 6 workplace dimensions
-- **Difficulty of entry** into the data field
-- **Job priority preferences** — remote work, better salary, good culture, etc.
-- **Demographics breakdown** — age, gender, education level, and geography
+| Tool | Purpose |
+|------|---------|
+| **Power BI Desktop** | Dashboard design and visualization |
+| **Power Query** | Data cleaning and transformation |
+| **DAX** | Calculated measures and KPIs |
+| **Excel** | Raw data source (.xlsx format) |
 
 ---
 
-## 🧹 Data Cleaning & Transformation
+## 🧹 Data Cleaning Process (Power Query)
 
-All cleaning and transformation was performed inside **Power Query** before loading data into the data model.
-
-### Data Cleaning
-- Removed irrelevant metadata columns (Browser, OS, City, Referrer, Time Spent) that added no analytical value
-- Handled blank and null values across salary, happiness, and demographic fields
-- Standardized free-text entries in Q1 (job titles), Q4 (industries), and Q5 (programming languages) — e.g., consolidating `"Business Analyst"`, `"BI Developer"`, and `"Analytics Consultant"` under cleaner categories
-- Removed duplicate or near-duplicate entries based on Unique ID
-
-### Data Transformation
-- **Salary column (Q3):** Split the salary range string (e.g., `"41k-65k"`) into two numeric columns (Min Salary, Max Salary), then calculated an **Average Salary** column for use in visuals
-- **Programming language (Q5):** Extracted and standardized `Other:` prefix entries (e.g., `"Other:SQL"`, `"Other:DAX"`) into a clean language label
-- **Age (Q10):** Kept as a numeric field; outlier values (e.g., age 92) were flagged
-- **Country (Q11):** Standardized `"Other (Please Specify):"` entries by extracting the actual country name for geographic visuals
-- **Happiness scores (Q6):** Confirmed all values fall within a 0–10 scale; empty cells treated as null (excluded from averages)
-- Created calculated columns and measures using **DAX** for KPIs like average salary by role, average happiness by dimension, and count of career switchers
-
----
-
-## 🛠️ Tools Used
-
-- **Microsoft Power BI Desktop** — report building, DAX calculations, and interactive visuals
-- **Power Query (M language)** — data cleaning, transformation, and column creation
-- **Microsoft Excel** — raw data source
-
----
-
-
-
-## 📌 Key Insights (from the data)
-
-### 💰 Salary
-- **Data Scientists and Senior roles** (Analytics Manager, Director of Analytics) report the highest salaries, frequently in the **$125k–$225k+** range
-- The majority of respondents, especially from **India, Nigeria, and Latin America**, fall in the **$0–40k** bracket, reflecting significant geographic pay disparity
-- **Finance and Tech** industries offer higher compensation compared to Healthcare and Education
-
-### 💻 Programming Languages
-- **Python** is the dominant language across nearly all roles — Data Analysts, Data Engineers, and Data Scientists alike
-- **R** is the second most preferred, particularly among analysts in Healthcare and Education
-- **SQL** appears frequently as a write-in under "Other," suggesting it's widely used but underrepresented in the original options
-
-### 😊 Job Satisfaction
-- **Work/Life Balance** and **Coworkers** consistently score higher than **Salary** and **Upward Mobility**
-- **Salary satisfaction** has some of the lowest average ratings across all roles — even higher earners rate it modestly
-- Respondents in **senior or managerial roles** tend to report higher happiness across all six dimensions
-
-### 🔄 Career Transitions
-- A large share of respondents **switched careers** into data — particularly Data Analysts and Data Scientists
-- Career switchers are spread across all age groups, with a notable cluster in the **late 20s to mid-30s**
-
-### 🚪 Breaking Into Data
-- The most common response to difficulty was **"Difficult"** or **"Very Difficult"**, especially among respondents from **Africa and South Asia**
-- Those who self-identified as **Student/Looking/None** rated entry difficulty the highest
-
-### 🌍 Demographics
-- Respondents span **60+ countries**, with the highest representation from the **United States, India, United Kingdom, and Canada**
-- The survey skews **male**, though female representation is notable in Healthcare, Education, and Finance sectors
-- **Bachelor's and Master's degrees** are the most common education levels among working professionals
+```
+Raw Data (630 rows, 26 columns)
+        │
+        ▼
+┌─────────────────────────────────────┐
+│  Step 1: Salary Column              │
+│  "60k-80k" → extracted midpoint     │
+│  → converted to numeric (INT)        │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│  Step 2: Job Title Standardization  │
+│  Rare titles → grouped into "Other" │
+│  Kept: Analyst, Scientist, Engineer │
+│  Architect, Developer               │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│  Step 3: Country Standardization    │
+│  Low-frequency countries → "Other"  │
+│  Kept top countries by volume       │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+        Clean Dataset ✅
+```
 
 ---
 
-## 👤 Author
+## 📊 DAX Measures Used
 
-**Raja Hanzala Muavia**
-📧 hanzala.analyst@gmail.com
-🔗 [LinkedIn](https://linkedin.com/in/hanzalaraja) | [GitHub](https://github.com/ThAnalyser)
+```dax
+-- Average Salary
+Avg Salary = AVERAGE('Survey'[Q3 - Current Yearly Salary (in USD)])
+
+-- Average Age
+Avg Age = AVERAGE('Survey'[Q10 - Current Age])
+
+-- Work/Life Balance Score
+Avg WorkLife = AVERAGE('Survey'[Q6 - Work/Life Balance])
+
+-- Salary Satisfaction Score
+Avg Salary Satisfaction = AVERAGE('Survey'[Q6 - Salary])
+
+-- Coworker Satisfaction
+Avg Coworkers = AVERAGE('Survey'[Q6 - Coworkers])
+
+-- Management Satisfaction
+Avg Management = AVERAGE('Survey'[Q6 - Management])
+
+-- Upward Mobility Score
+Avg Upward Mobility = AVERAGE('Survey'[Q6 - Upward Mobility])
+
+-- Learning & Growth Score
+Avg Learning = AVERAGE('Survey'[Q6 - Learning New Things])
+```
 
 ---
 
-## 📄 License
+## 📈 Dashboard Pages & Visuals
 
-This project is for educational and portfolio purposes.
+### Page 1: Survey Overview
+
+| Visual | Type | Insight |
+|--------|------|---------|
+| Country of Survey Takers | Treemap | US leads, followed by India and UK |
+| Average Salary by Job Title | Bar Chart | Data Scientists earn the most |
+| Favorite Programming Language | Clustered Bar | Python dominates across all roles |
+| Difficulty to Break into Data | Donut Chart | 42.7% say neither easy nor difficult |
+| Satisfaction: Work/Life Balance | Gauge | 5.74 / 10 |
+| Satisfaction: Salary | Gauge | 4.27 / 10 |
+| Total Survey Takers | KPI Card | 630 |
+| Average Age of Respondents | KPI Card | 29.87 |
+
+### Page 2: Satisfaction & Demographics
+
+| Visual | Type | Insight |
+|--------|------|---------|
+| Satisfaction: Coworkers | Gauge | 5.86 / 10 — highest satisfaction |
+| Satisfaction: Learning & Growth | Gauge | 5.61 / 10 |
+| Satisfaction: Management | Gauge | 5.33 / 10 |
+| Satisfaction: Upward Mobility | Gauge | 4.76 / 10 |
+| Most Important Factor in New Job | Bar Chart | Better Salary ranks #1 |
+| Gender Distribution | Donut Chart | 74% Male, 26% Female |
+| Highest Level of Education | Bar Chart | Bachelors degree most common |
+| Industry of Data Professionals | Bar Chart | Tech and Finance lead |
+| Age Distribution of Respondents | Donut Chart | 25–29 is the largest age group |
+
+---
+
+## 💡 Key Insights
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   KEY FINDINGS                          │
+├─────────────────────────────────────────────────────────┤
+│  💰  Data Scientists earn the highest average salary    │
+│  🐍  Python is the #1 language across ALL roles         │
+│  📊  42.7% found breaking into data neither easy/hard   │
+│  😐  Salary satisfaction is the LOWEST score (4.27/10)  │
+│  🤝  Coworker satisfaction is the HIGHEST (5.86/10)     │
+│  🎯  Better Salary is the top job search priority       │
+│  🎓  Most professionals hold a Bachelor's degree        │
+│  👥  74% of survey respondents are Male                 │
+│  🏢  Tech and Finance are the top hiring industries     │
+│  📅  Average professional age is 29.87 years            │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+
+
+
+## 🚀 How to Use
+
+```bash
+# Step 1: Clone the repository
+git clone https://github.com/ThAnalyser/data-professional-survey-dashboard
+
+# Step 2: Open the .pbix file in Power BI Desktop
+# (Free download: https://powerbi.microsoft.com/desktop)
+
+# Step 3: Explore the dashboard
+# Use slicers to filter by country, job title, or gender
+```
+
+---
+
+## 🤝 Connect With Me
+
+<div align="center">
+
+| Platform | Link |
+|----------|------|
+| 💼 LinkedIn | [linkedin.com/in/hanzalaraja](https://linkedin.com/in/hanzalaraja) |
+| 🐙 GitHub | [github.com/ThAnalyser](https://github.com/ThAnalyser) |
+| 📧 Email | Available on LinkedIn |
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=1a1f5e&height=100&section=footer" width="100%"/>
+
+⭐ **If you found this project useful, please give it a star!** ⭐
+
+*Built with 💙 by Raja Hanzala Muavia*
+
+</div>
